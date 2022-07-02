@@ -1,0 +1,36 @@
+//
+import java.util.Scanner;
+class Student
+{
+ int id;
+ String name,branch,sem; 
+ 
+void getData()
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter student Id : "); 
+id = sc.nextInt();
+System.out.println("Enter student Name : "); 
+name = sc.next();
+System.out.print("Enter student's branch: "); 
+branch = sc.next();
+System.out.print("Enter student semester  : "); 
+sem = sc.next();
+}
+void display()
+{
+System.out.println("ID \t name \t branch \t sem");
+System.out.println(id + "\t" +name + "\t" +branch + "\t"+sem);
+}
+}
+public class Main
+{
+public static void main(String args[])
+{
+ Student std = new Student();
+ System.out.println("Enter details of  student");
+ std.getData();
+System.out.println("Details of Student\n");
+ std.display();
+}
+}
