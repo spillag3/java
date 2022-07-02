@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+// thread to print prime numbers
+class part1 extends Thread
+{
+  public synchronized void run ()
+  {
+    
+    
+       for (int i = 1; i <= 10; i++)
+        {
+            long fact = 1;
+            for (int j = 1; j <= i; j++) {
+                fact = fact * j;
+            }
+ 
+            System.out.printf("The factorial of %d is %d\n", i, fact);
+  }
+}
+}
+
+// thread to print palindrome numbers
+class part2 extends Thread
+{
+  public synchronized void run ()
+  {
+    int r,sum=0,temp;    
+      int n=343;
+      temp=n;    
+      
+		while(n>0)
+		{    
+       		r=n%10;  
+       		sum=(sum*10)+r;    
+       		n=n/10;    
+       }    
+      
+		if(temp==sum)    
+       {
+			System.out.println("palindrome number ");    
+       }
+		else    
+		{
+       System.out.println("not palindrome");    
+    	}  
+
+  }
+}
+
+public class Main
+{
+  public static void main (String args[])
+  {
+    part1 t1 = new part1 ();
+    part2 t2 = new part2 ();
+
+    Thread m1 = new Thread (t1);
+    Thread m3 = new Thread (t2);
+    Scanner sc = new Scanner (System.in);
+
+    // start() method starts the execution of thread.
+      m1.start ();
+      m3.start ();
+
+      try
+    {
+
+      // join() method waits for the thread to die
+      m1.join ();
+      m3.join ();
+    }
+    catch (InterruptedException e)
+    {
+      e.printStackTrace ();
+    }
+  }
+}
