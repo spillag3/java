@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String args[]) {
+        
+        int busno,fare=1,charge;
+        char cityType;
+        Scanner in = new Scanner(System.in);
+         System.out.print("Enter Bus number: ");
+         busno = in.nextInt();
+         System.out.print("Enter City name: ");
+         cityType = in.next().charAt(0);
+         System.out.print("Enter distance travelled: ");
+        int dist = in.nextInt();
+        switch(cityType)
+        {
+            case 'A': charge=30;
+                        fare=dist*charge;
+                        break;
+            case 'D': charge=50;
+                        fare=dist*charge;
+                        break;
+            case 'G': charge=15;
+                        fare=dist*charge;
+                        break;
+        }
+       
+    
+        System.out.println("Bus No = " + busno);
+        System.out.println("City Type = " + cityType);
+        System.out.println("distance travelled = " + dist);
+        System.out.println("Fare = " + fare);
+    }
+}
