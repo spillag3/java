@@ -1,0 +1,96 @@
+import java.io.*;           
+class BankAccount
+   {
+   private double balance;          
+
+   public BankAccount(double openingBalance)  
+      {
+      balance = openingBalance;
+      }
+
+   public void withdraw(double amount)        
+      {
+      balance = balance - amount;
+      }
+
+   public void display()          
+      {
+      System.out.println("balance=" + balance);
+      }
+
+   }  
+class BankApp2
+   {
+   public static void main(String[] args) throws IOException
+     {
+
+     try     
+
+       {
+
+        double value;
+
+        System.out.print("Enter the opening balance: ");
+        System.out.flush();
+
+        double balance = getDouble();
+        BankAccount Account = new BankAccount(balance);
+     
+        double withdraw = getDouble();
+        System.out.print("Before transactions, ");
+        Account.display();
+          
+        if (balance < withdraw)
+           throw new Exception ("Error");
+
+        Account.withdraw(withdraw);
+
+        System.out.print("After transactions, ");
+        Account.display();
+
+        } 
+
+        catch (Exception e) {
+
+           System.out.println("Error- withdrawal amount exceeds balance");
+
+        }
+
+
+        int val = 0;
+
+        while (true) {
+
+           try {
+
+              if (val == 0) throw new Exception();
+              break;
+
+           }
+
+           catch(Exception f){
+              val++;
+           }
+
+        } 
+
+
+      }    
+
+     public static String getString() throws IOException
+      {
+      InputStreamReader isr = new InputStreamReader (System.in);
+      BufferedReader br = new BufferedReader (isr);
+      String s = br.readLine();
+      return s;
+      }
+
+     public static double getDouble() throws IOException
+      {
+      String s = getString();
+      Double aDub = Double.valueOf(s);
+      return aDub.doubleValue();
+      }
+
+
+   }
