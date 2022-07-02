@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Refrigerator
+{
+    private int cost;
+    private String name;
+    private double dc;
+    private double amt;
+    
+    public void input() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter customer name: ");
+        name = in.nextLine();
+        System.out.print("Enter Price: ");
+        cost = in.nextInt();
+    }
+    
+    public void Discount() {
+        if (cost <= 30000)
+            dc = cost*0.03;
+        else if (cost <= 50000)
+            dc = cost * 0.07;
+        else if (cost <= 130000)
+            dc = cost * 0.1;
+        else
+            dc = cost * 0.15;
+            
+        amt = cost - dc;
+    }
+    
+    public void display() {
+        System.out.println("Name of the customer\tDiscount\tAmount to be paid");
+        System.out.println(name + "\t" + dc + "\t" + amt);   
+    }
+    
+    public static void main(String args[]) {
+        Refrigerator obj = new Refrigerator();
+        obj.input();
+        obj.Discount();
+        obj.display();
+    }
+}
